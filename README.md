@@ -24,15 +24,15 @@
 | Skill | 触发词 | 说明 |
 |-------|--------|------|
 | `test-case-generator` | "生成测试用例"、"写用例"、"test case" | 基于需求文档生成高规范标准格式的功能测试用例，包含循环迭代质量保障流程，确保用例达到理想质量阈值 |
-| `test-case-reviewer` | "评审用例"、"用例审查" | 评审已有测试用例质量，检查覆盖度、可执行性、可验证性、独立性等维度，输出结构化评审报告 |
-| `test-e2e-scenarios` | "E2E测试"、"端到端场景" | 基于需求输出端到端场景化测试用例，以用户旅程为主线描述跨模块/跨页面的完整操作流程 |
+| `test-case-reviewer` | "评审用例"、"用例审查" | 评审已有测试用例、API 接口用例和 E2E 场景用例质量，检查覆盖度、可执行性、可验证性、独立性等维度，输出结构化评审报告 |
+| `test-e2e-scenarios` | "E2E测试"、"端到端场景" | 基于需求输出端到端场景化测试用例，以用户旅程为主线描述跨模块/跨页面的完整操作流程，支持 Web/App/Desktop |
 | `test-api-generator` | "接口测试"、"API用例"、"RESTful测试" | 基于 API 文档/接口描述生成高覆盖、可执行的 API 接口测试用例，覆盖功能正确性、参数校验、鉴权、安全基线等维度 |
 
 ### 协作导出
 
 | Skill | 触发词 | 说明 |
 |-------|--------|------|
-| `test-case-to-sheets` | "转飞书表格"、"MD转表格"、"导出测试用例" | 将 Markdown 测试用例文档转换为飞书电子表格，自动补全所属目录、标签、用例类型等字段 |
+| `test-case-to-sheets` | "转飞书表格"、"MD转表格"、"导出测试用例" | 将测试用例 JSON 文件转换为 Excel 表格，自动补全所属目录、标签、用例类型等字段，输出可直接用于协作的 `.xlsx` 文件 |
 
 ## 推荐工作流
 
@@ -64,32 +64,34 @@ cp -r skills/ ~/.claude/skills/
 
 ```
 skills/
-├── requirements-analyst/       # 需求分析
+├── requirements-analyst/           # 需求分析
 │   ├── SKILL.md
 │   └── references/
 │       └── requirements_template.md
-├── requirements-confirm/       # 需求确认
+├── requirements-confirm/           # 需求确认
 │   └── SKILL.md
-├── test-plan/                  # 测试计划
+├── test-plan/                      # 测试计划
 │   └── SKILL.md
-├── test-case-generator/        # 功能测试用例生成
+├── test-case-generator/            # 功能测试用例生成
 │   ├── SKILL.md
 │   └── references/
 │       └── test_case_template.md
-├── test-case-reviewer/         # 用例质量评审
+├── test-case-reviewer/             # 用例质量评审
 │   ├── SKILL.md
 │   └── references/
 │       └── review_checklist.md
-├── test-e2e-scenarios/         # E2E 场景用例
+├── test-e2e-scenarios/             # E2E 场景用例
 │   ├── SKILL.md
 │   └── references/
 │       └── e2e_scenario_template.md
-├── test-api-generator/         # API 接口测试
+├── test-api-generator/             # API 接口测试
 │   ├── SKILL.md
 │   └── references/
-│       └── api_test_template.md
-└── test-case-to-sheets/        # 导出到飞书
-    └── SKILL.md
+│       └── test_case_template.md
+└── test-case-to-sheets/            # 导出到 Excel
+    ├── SKILL.md
+    └── scripts/
+        └── json_test_cases_to_excel.py
 ```
 
 ## 使用示例
@@ -110,10 +112,10 @@ skills/
 [粘贴用例内容或指定文件路径]
 ```
 
-### 导出到飞书
+### 导出到 Excel
 
 ```
-/test-case-to-sheets 将 test_cases.md 转换为飞书表格
+/test-case-to-sheets 将测试用例 JSON 转为 Excel 表格
 ```
 
 ## License
